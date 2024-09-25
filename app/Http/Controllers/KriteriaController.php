@@ -43,7 +43,7 @@ class KriteriaController extends Controller
     }
 
     public function update(Request $request, $id){
-        $this->validate($request, [ // tambahal all() jika error
+        $this->validate($request, [
             'nama_kriteria' => 'required|string',
             'attribut'       => 'required|string',
             'bobot'         => 'required|numeric'
