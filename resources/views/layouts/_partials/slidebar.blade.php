@@ -16,7 +16,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('kriteria.index')}}">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Kriteria</span></a>
             </li>
