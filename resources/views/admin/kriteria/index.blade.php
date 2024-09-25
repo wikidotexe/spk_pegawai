@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
+@section('css')
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+@stop
 @section('content')
     <div class="row">
         <div class="col-md-4">
@@ -12,11 +16,19 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="tambahkriteria">
                     <div class="card-body">
-                        <form action="{{ route('kriteria.store')}}" method="post">
+                        @if (Session::has('msg'))
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <strong>Info!</strong> {{ Session::get('msg') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        <form action="{{ route('kriteria.store') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="nama">Nama Kriteria</label>
-                                <input type="text" class="form-control @error('nama_kriteria') is-invalid @enderror" name="nama_kriteria">
+                                <input type="text" class="form-control @error('nama_kriteria') is-invalid @enderror" name="nama_kriteria" required>
                                 @error('nama_kriteria')
                                     <div class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -38,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bobot">Bobot Kriteria</label>
-                                <input type="text" class="form-control @error('bobot') is-invalid @enderror" name="bobot">
+                                <input type="text" class="form-control @error('bobot') is-invalid @enderror" name="bobot" required>
                                 @error('bobot')
                                     <div class="invalid-feedback" role="alert">
                                         {{ $message }}
@@ -82,10 +94,10 @@
                                             <td>{{ $row->bobot }}</td>
                                             <td>
                                                 <a href="{{ route('kriteria.edit', $row->id )}}" class="btn btn-sm btn-circle btn-warning"><i class="fa fa-edit"></i></a>
-                                                <form action="{{ route('kriteria.destroy', $row->id )}}" method="POST" style="display:inline;">
+                                                <form action="{{ route('kriteria.destroy', $row->id )}}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-circle btn-danger hapus">
+                                                    <button type="submit" class="btn btn-sm btn-circle btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </form>
@@ -100,4 +112,14 @@
             </div>
         </div>
     </div>
+@stop
+@section('js')
+    <!-- Page level plugins -->
+    <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#DataTable').DataTable();
+        });
+    </script>
 @stop
