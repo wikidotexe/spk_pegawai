@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class kriteria extends Model
 {
-    protected $table ='kriteria';
+    use HasFactory; // Optional, remove if not needed
+
+    protected $table = 'kriteria';
     protected $guarded = [];
 }

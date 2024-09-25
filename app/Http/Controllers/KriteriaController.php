@@ -20,14 +20,14 @@ class KriteriaController extends Controller
     public function store(Request $request){
         $this->validate($request,[ // tambahal all() jika error
             'nama_kriteria' => 'required|string',
-            'atribut'       => 'required|string',
+            'attribut'       => 'required|string',
             'bobot'         => 'required|numeric'
         ]);
 
         try {
             $kriteria = new kriteria();
             $kriteria->nama_kriteria = $request->nama_kriteria;
-            $kriteria->attribut = $request->atribut;
+            $kriteria->attribut = $request->attribut;
             $kriteria->bobot = $request->bobot;
             $kriteria->save();
             return back()->with('msg', 'Berhasil menambahkan data');
@@ -45,7 +45,7 @@ class KriteriaController extends Controller
     public function update(Request $request, $id){
         $this->validate($request, [ // tambahal all() jika error
             'nama_kriteria' => 'required|string',
-            'atribut'       => 'required|string',
+            'attribut'       => 'required|string',
             'bobot'         => 'required|numeric'
         ]);
 
@@ -53,7 +53,7 @@ class KriteriaController extends Controller
             $kriteria = kriteria::findOrFail($id);
             $kriteria->update([
                 'nama_kriteria' => $request->nama_kriteria,
-                'attribut'      => $request->atribut,
+                'attribut'      => $request->attribut,
                 'bobot'         => $request->bobot
             ]);
             return back()->with('msg', 'Berhasil merubah data');

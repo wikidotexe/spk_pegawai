@@ -17,8 +17,29 @@
                             <div class="form-group">
                                 <label for="nama">Nama Kriteria</label>
                                 <input type="text" class="form-control @error('nama_kriteria') is-invalid @enderror" name="nama_kriteria">
-
                                 @error('nama_kriteria')
+                                    <div class="invalid-feedback" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="attribut">Attribut Kriteria</label>
+                                <select name="attribut" id="attribut" class="form-control @error('attribut') is-invalid @enderror" required>
+                                    <option value="">Pilih Attribut</option>
+                                    <option value="Benefit">Benefit</option>
+                                    <option value="Cost">Cost</option>
+                                </select>
+                                @error('attribut')
+                                    <div class="invalid-feedback" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="bobot">Bobot Kriteria</label>
+                                <input type="text" class="form-control @error('bobot') is-invalid @enderror" name="bobot">
+                                @error('bobot')
                                     <div class="invalid-feedback" role="alert">
                                         {{ $message }}
                                     </div>
@@ -46,6 +67,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Kriteria</th>
+                                        <th>Attribut</th>
+                                        <th>Bobot</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -53,10 +76,12 @@
                                     @php $no = 1; @endphp
                                     @foreach ($kriteria as $row)
                                         <tr>
-                                            <td>{{  $no++ }}</td>
+                                            <td>{{ $no++ }}</td>
                                             <td>{{ $row->nama_kriteria }}</td>
+                                            <td>{{ $row->attribut }}</td>
+                                            <td>{{ $row->bobot }}</td>
                                             <td>
-                                                <a href="{{ route('kriteria.edit', $row->id )}}" class="btn btn-sm btn-circle btn-warning" ><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('kriteria.edit', $row->id )}}" class="btn btn-sm btn-circle btn-warning"><i class="fa fa-edit"></i></a>
                                                 <form action="{{ route('kriteria.destroy', $row->id )}}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
