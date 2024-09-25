@@ -94,13 +94,7 @@
                                             <td>{{ $row->bobot }}</td>
                                             <td>
                                                 <a href="{{ route('kriteria.edit', $row->id )}}" class="btn btn-sm btn-circle btn-warning"><i class="fa fa-edit"></i></a>
-                                                <form action="{{ route('kriteria.destroy', $row->id )}}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this item?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-circle btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                                <a href="{{ route('kriteria.destroy', $row->id )}}" class="btn btn-sm btn-circle btn-danger hapus"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -117,9 +111,41 @@
     <!-- Page level plugins -->
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#DataTable').DataTable();
-        });
+
+            $('.hapus').on('click', function(){
+                swal({
+            title: "Are kamu yakin?",
+            text: "Sekali kamu hapus, data tidak dapat dikembalikan!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: $(this).attr('href'),
+                    type: 'DELETE',
+                    data: {
+                        '_token': "{{ csrf_token() }}"
+                    },
+                    success:function(){
+                        swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                        }).then((willDelete) => {
+                            window.location = "{{ route('kriteria.index')}}"
+                        });
+                    }
+                })
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+            });
+                return false;
+            })
+        })
     </script>
 @stop

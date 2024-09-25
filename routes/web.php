@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KriteriaController; // Import the controller
+use App\Http\Controllers\KriteriaController;
 
 Route::get('/', function () {
     return view('welcome');
