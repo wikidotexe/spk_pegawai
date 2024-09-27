@@ -33,7 +33,7 @@ class KriteriaController extends Controller
             return back()->with('msg', 'Berhasil menambahkan data');
         } catch (Exception $e) {
             \Log::emergency("File: " . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            die("Gagal");
+            die("Gagal menambahkan data");
         }
     }
 
@@ -59,7 +59,7 @@ class KriteriaController extends Controller
             return back()->with('msg', 'Berhasil merubah data');
         } catch (Exception $e) {
             \Log::emergency("File: " . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            die("Gagal");
+            die("Gagal mengupdate data");
         }
     }
 
@@ -69,7 +69,7 @@ class KriteriaController extends Controller
             $kriteria->delete();
         } catch (Exception $e) {
             \Log::emergency("File: " . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            die("Gagal");
+            die("Gagal menghapus data");
         }
     }
 }
