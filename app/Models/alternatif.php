@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class alternatif extends Model
 {
     use HasFactory;
+
+    protected $table = 'alternatif';
+    protected $guarde = [];
 }
