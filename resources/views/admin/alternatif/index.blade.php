@@ -107,7 +107,7 @@
                         '_token': "{{ csrf_token() }}"
                     },
                     success:function(){
-                        swal("Poof! Your imaginary file has been deleted!", {
+                        swal("Data berhasil dihapus!", {
                         icon: "success",
                         }).then((willDelete) => {
                             window.location = "{{ route('alternatif.index')}}"

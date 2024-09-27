@@ -133,7 +133,7 @@
                         '_token': "{{ csrf_token() }}"
                     },
                     success:function(){
-                        swal("Poof! Your imaginary file has been deleted!", {
+                        swal("Data berhasi dihapus!", {
                         icon: "success",
                         }).then((willDelete) => {
                             window.location = "{{ route('kriteria.index')}}"
