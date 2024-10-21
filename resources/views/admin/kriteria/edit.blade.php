@@ -38,8 +38,8 @@
                             <div class="form-group">
                                 <label for="attribut">Attribut Kriteria</label>
                                 <select name="attribut" id="attribut" class="form-control @error('attribut') is-invalid @enderror" required>
-                                    <option value="Benefit" {{ $kriteria->attribut == 'Benefit' ? 'selected' : '' }}>Benefit</option>
-                                    <option value="Cost" {{ $kriteria->attribut == 'Cost' ? 'selected' : '' }}>Cost</option>
+                                    <option value="Kualifikasi" {{ $kriteria->attribut == 'Kualifikasi' ? 'selected' : '' }}>Kualifikasi</option>
+                                    <option value="Pengalaman" {{ $kriteria->attribut == 'Pengalaman' ? 'selected' : '' }}>Pengalaman</option>
                                 </select>
                                 @error('attribut')
                                     <div class="invalid-feedback" role="alert">
