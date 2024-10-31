@@ -10,5 +10,5 @@ class alternatif extends Model
     use HasFactory;
 
     protected $table = 'alternatif';
-    protected $guarde = [];
+    protected $guarded = [];
 }

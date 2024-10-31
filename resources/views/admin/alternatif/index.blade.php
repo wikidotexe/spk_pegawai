@@ -115,7 +115,7 @@
                     }
                 })
             } else {
-                swal("Your imaginary file is safe!");
+                swal("Data Aman");
             }
             });
                 return false;

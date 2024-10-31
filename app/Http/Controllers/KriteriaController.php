@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\kriteria;
+use App\Models\crips;
 
 class KriteriaController extends Controller
 {
@@ -71,5 +72,12 @@ class KriteriaController extends Controller
             \Log::emergency("File: " . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             die("Gagal menghapus data");
         }
+    }
+
+    public function show ($id){
+
+        $data['crips'] = crips::where('kriteria_id', $id)->get();
+        $data['kriteria'] = kriteria::findOrFail($id);
+        return view('admin.kriteria.show', $data);
     }
 }
