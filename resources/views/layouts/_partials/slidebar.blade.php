@@ -30,6 +30,12 @@
                     <span>Alternatif</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('penilaian.index')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Penilaian</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

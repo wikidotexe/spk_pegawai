@@ -11,4 +11,8 @@ class alternatif extends Model
 
     protected $table = 'alternatif';
     protected $guarded = [];
+
+    public function penilaian () {
+        return $this->hasMany(penilaian::class, 'alternatif_id');
+    }
 }
