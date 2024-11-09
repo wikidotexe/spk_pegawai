@@ -11,4 +11,8 @@ class kriteria extends Model
 
     protected $table = 'kriteria';
     protected $guarded = [];
+
+    public function crips() {
+        return $this->hasMany(crips::class, 'kriteria_id');
+    }
 }

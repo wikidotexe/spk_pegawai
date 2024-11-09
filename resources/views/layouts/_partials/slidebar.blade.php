@@ -32,7 +32,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('penilaian.index')}}">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Penilaian</span></a>
             </li>
 

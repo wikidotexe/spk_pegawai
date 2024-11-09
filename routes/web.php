@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\CripsController;
+use App\Http\Controllers\PenilaianController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,4 +19,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('kriteria', KriteriaController::class)->except(['create']);
     Route::resource('alternatif', AlternatifController::class)->except(['create', 'show']);
     Route::resource('crips', CripsController::class)->except(['index', 'create', 'show']);
+    Route::resource('penilaian', PenilaianController::class);
 });
