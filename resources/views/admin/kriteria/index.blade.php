@@ -39,8 +39,8 @@
                                 <label for="attribut">Attribut Kriteria</label>
                                 <select name="attribut" id="attribut" class="form-control @error('attribut') is-invalid @enderror" required>
                                     <option value="">Pilih Attribut</option>
-                                    <option value="Benefit">Kualifikasi</option>
-                                    <option value="Cost">Pengalaman</option>
+                                    <option value="Kualifikasi">Kualifikasi</option>
+                                    <option value="Pengalaman">Pengalaman</option>
                                 </select>
                                 @error('attribut')
                                     <div class="invalid-feedback" role="alert">
